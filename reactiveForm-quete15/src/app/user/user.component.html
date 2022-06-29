@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" >
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
     <div formGroupName="credentials">
 
 <div>
@@ -9,6 +9,11 @@
 <div>
     <label>mail : 
          <input type="text" name="mail" formControlName="mail">
+        
+                <div  *ngIf="userForm.get('credentials.mail')?.errors" class="error-msg" >
+                    <div [hidden]="!userForm.get('credentials.mail')?.errors?.['required']">password is required.</div>
+                    <div [hidden]="!userForm.get('credentials.mail')?.invalid">password is invalid "@".</div>
+                </div>
     </label>
 </div>
 <div>
@@ -31,7 +36,7 @@
          <input type="text" name="city" formControlName="city">
     </label>
 </div>
-<button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">Inscription</button>
+<button type="submit"  >Inscription</button>
 </div>
 </form>
 
@@ -39,7 +44,7 @@
 
 <div *ngFor="let user of users">
     {{user.name}}
-    {{user.city}}
+    {{user.mail}}
     {{user.password}}
     {{user.street}}
     {{user.postalCode}}
