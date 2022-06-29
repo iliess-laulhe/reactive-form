@@ -1,0 +1,47 @@
+<form [formGroup]="userForm" >
+    <div formGroupName="credentials">
+
+<div>
+    <label >Name :
+        <input type="text" name="name" formControlName="name">
+    </label>
+</div>
+<div>
+    <label>mail : 
+         <input type="text" name="mail" formControlName="mail">
+    </label>
+</div>
+<div>
+    <label>password  :
+        <input type="text" name="password" formControlName="password">
+    </label>
+</div>
+<div>
+    <label>street : 
+         <input type="text" name="street" formControlName="street">
+    </label>
+</div>
+<div>
+    <label>code postal : 
+        <input type="text" name="postalCode" formControlName="postalCode">
+    </label> 
+</div>
+<div>
+    <label>ville : 
+         <input type="text" name="city" formControlName="city">
+    </label>
+</div>
+<button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">Inscription</button>
+</div>
+</form>
+
+<h1>Utilisateurs inscrit:</h1>
+
+<div *ngFor="let user of users">
+    {{user.name}}
+    {{user.city}}
+    {{user.password}}
+    {{user.street}}
+    {{user.postalCode}}
+    {{user.city}}
+</div>
